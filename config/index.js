@@ -10,6 +10,7 @@ module.exports = {
         password: process.env.DB_PASS,
         host: process.env.HOST,
         dialect: process.env.DIALECT,
+        port: process.env.DB_PORT,
         options: {
             logging: true,
             dialect: process.env.DIALECT,
