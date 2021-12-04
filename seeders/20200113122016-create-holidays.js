@@ -49,11 +49,19 @@ for (let i = 0; i <= 5; i++) {
 }
 
 module.exports = {
-    up: (queryInterface, Sequelize) => {
-        return queryInterface.bulkInsert('holidays', holidays);
+    up: async (queryInterface, Sequelize) => {
+        await queryInterface.sequelize.query('SET FOREIGN_KEY_CHECKS = 0');
+
+        await queryInterface.bulkInsert('holidays', holidays);
+
+        await queryInterface.sequelize.query('SET FOREIGN_KEY_CHECKS = 1');
     },
 
-    down: (queryInterface, Sequelize) => {
-        return queryInterface.bulkDelete('holidays');
+    down: async (queryInterface, Sequelize) => {
+        await queryInterface.sequelize.query('SET FOREIGN_KEY_CHECKS = 0');
+
+        await queryInterface.bulkDelete('holidays');
+
+        await queryInterface.sequelize.query('SET FOREIGN_KEY_CHECKS = 1');
     }
 };
