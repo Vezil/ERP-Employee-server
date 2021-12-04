@@ -39,7 +39,9 @@ module.exports = {
         });
     },
 
-    down: (queryInterface, Sequelize) => {
+    down: async (queryInterface, Sequelize) => {
+        await queryInterface.sequelize.query('SET FOREIGN_KEY_CHECKS = 0');
+
         return queryInterface.dropTable('contracts');
     }
 };
