@@ -1,9 +1,7 @@
 'use strict';
 
 module.exports = {
-    up: async (queryInterface, Sequelize) => {
-        await queryInterface.sequelize.query('SET FOREIGN_KEY_CHECKS = 0');
-
+    up: (queryInterface, Sequelize) => {
         return queryInterface.createTable('contracts', {
             id: {
                 allowNull: false,
@@ -41,9 +39,7 @@ module.exports = {
         });
     },
 
-    down: async (queryInterface, Sequelize) => {
-        await queryInterface.sequelize.query('SET FOREIGN_KEY_CHECKS = 0');
-
+    down: (queryInterface, Sequelize) => {
         return queryInterface.dropTable('contracts');
     }
 };

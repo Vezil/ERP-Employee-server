@@ -45,11 +45,15 @@ for (let i = 0; i <= 5; i++) {
 }
 
 module.exports = {
-    up: (queryInterface, Sequelize) => {
+    up: async (queryInterface, Sequelize) => {
+        await queryInterface.sequelize.query('SET FOREIGN_KEY_CHECKS = 0');
+
         return queryInterface.bulkInsert('contracts', contracts);
     },
 
-    down: (queryInterface, Sequelize) => {
+    down: async (queryInterface, Sequelize) => {
+        await queryInterface.sequelize.query('SET FOREIGN_KEY_CHECKS = 0');
+
         return queryInterface.bulkDelete('contracts');
     }
 };
