@@ -45,9 +45,7 @@ for (let i = 0; i <= 5; i++) {
 }
 
 module.exports = {
-    up: async (queryInterface, Sequelize) => {
-        await Sequelize.query('SET FOREIGN_KEY_CHECKS = 0');
-
+    up: (queryInterface, Sequelize) => {
         return queryInterface.bulkInsert('contracts', contracts);
     },
 
