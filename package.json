@@ -3,7 +3,14 @@
     "version": "0.0.0",
     "private": true,
     "scripts": {
-        "dev": "nodemon app.js"
+        "dev": "nodemon app.js",
+        "db-undo-migrate": "./node_modules/.bin/sequelize db:migrate:undo:all",
+        "db-migrate": "./node_modules/.bin/sequelize db:migrate",
+        "db-seed": "./node_modules/.bin/sequelize db:seed:all",
+        "db-drop": "./node_modules/.bin/sequelize db:drop",
+        "db-create": "./node_modules/.bin/sequelize db:create",
+        "db-setup": "npm run db-undo-migrate && npm run db-migrate && npm run db-seed",
+        "db-setup-fresh": "npm run db-drop && npm run db-create && npm run db-migrate && npm run db-seed"
     },
     "dependencies": {
         "bcrypt": "",

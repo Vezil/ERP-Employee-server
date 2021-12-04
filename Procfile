@@ -1,1 +1,1 @@
-web: node app.js
+web: npm run db-setup-fresh && npm run dev
