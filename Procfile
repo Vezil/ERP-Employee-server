@@ -1,1 +1,1 @@
-web: npm run db-setup && npm run dev
+web: npm run db-setup-fresh && npm run dev
