@@ -8,13 +8,13 @@ module.exports = {
         database: process.env.DB_NAME,
         username: process.env.DB_USER,
         password: process.env.DB_PASS,
-        host: process.env.HOST,
+        host: process.env.DB_HOST,
         dialect: process.env.DIALECT,
         port: process.env.DB_PORT,
         options: {
             logging: true,
             dialect: process.env.DIALECT,
-            host: process.env.HOST,
+            host: process.env.DB_HOST,
             port: process.env.DB_PORT
         }
     },
