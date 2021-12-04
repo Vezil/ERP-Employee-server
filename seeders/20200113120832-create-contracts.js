@@ -48,12 +48,16 @@ module.exports = {
     up: async (queryInterface, Sequelize) => {
         await queryInterface.sequelize.query('SET FOREIGN_KEY_CHECKS = 0');
 
-        return queryInterface.bulkInsert('contracts', contracts);
+        await queryInterface.bulkInsert('contracts', contracts);
+
+        await queryInterface.sequelize.query('SET FOREIGN_KEY_CHECKS = 1');
     },
 
     down: async (queryInterface, Sequelize) => {
         await queryInterface.sequelize.query('SET FOREIGN_KEY_CHECKS = 0');
 
-        return queryInterface.bulkDelete('contracts');
+        await queryInterface.bulkDelete('contracts');
+
+        await queryInterface.sequelize.query('SET FOREIGN_KEY_CHECKS = 1');
     }
 };
