@@ -41,11 +41,19 @@ const user2Role = {
 userRoles.push(user2Role);
 
 module.exports = {
-    up: (queryInterface, Sequelize) => {
-        return queryInterface.bulkInsert('user_roles', userRoles);
+    up: async (queryInterface, Sequelize) => {
+        await queryInterface.sequelize.query('SET FOREIGN_KEY_CHECKS = 0');
+
+        await queryInterface.bulkInsert('user_roles', userRoles);
+
+        await queryInterface.sequelize.query('SET FOREIGN_KEY_CHECKS = 1');
     },
 
-    down: (queryInterface, Sequelize) => {
-        return queryInterface.bulkDelete('user_roles');
+    down: async (queryInterface, Sequelize) => {
+        await queryInterface.sequelize.query('SET FOREIGN_KEY_CHECKS = 0');
+
+        await queryInterface.bulkDelete('user_roles');
+
+        await queryInterface.sequelize.query('SET FOREIGN_KEY_CHECKS = 1');
     }
 };

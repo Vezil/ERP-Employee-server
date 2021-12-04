@@ -62,11 +62,19 @@ const user2 = {
 users.push(user2);
 
 module.exports = {
-    up: (queryInterface, Sequelize) => {
-        return queryInterface.bulkInsert('users', users);
+    up: async (queryInterface, Sequelize) => {
+        await queryInterface.sequelize.query('SET FOREIGN_KEY_CHECKS = 0');
+
+        await queryInterface.bulkInsert('users', users);
+
+        await queryInterface.sequelize.query('SET FOREIGN_KEY_CHECKS = 1');
     },
 
-    down: (queryInterface, Sequelize) => {
-        return queryInterface.bulkDelete('users');
+    down: async (queryInterface, Sequelize) => {
+        await queryInterface.sequelize.query('SET FOREIGN_KEY_CHECKS = 0');
+
+        await queryInterface.bulkDelete('users');
+
+        await queryInterface.sequelize.query('SET FOREIGN_KEY_CHECKS = 1');
     }
 };
