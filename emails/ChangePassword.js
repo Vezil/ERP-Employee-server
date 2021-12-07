@@ -1,6 +1,4 @@
 module.exports = function(person) {
-    console.log(person);
-
     return {
         from: '"Admin" <admin@erp.test>',
         to: person.email,
