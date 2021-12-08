@@ -68,7 +68,6 @@ module.exports = {
             'SET @@auto_increment_increment=1'
         );
         await queryInterface.sequelize.query('SET @@auto_increment_offset=1');
-        await queryInterface.sequelize.query('SET FOREIGN_KEY_CHECKS = 0');
 
         await queryInterface.bulkInsert('users', users);
 
