@@ -109,6 +109,13 @@ module.exports = {
             const newPassword = req.body.newPassword;
             const newPasswordRepeat = req.body.newPasswordRepeat;
 
+            if (process.env.NODE_ENV === 'production') {
+                return res.status(400).json({
+                    error:
+                        'Sorry! This feature is unavailable for demo purposes.'
+                });
+            }
+
             if (newPassword !== newPasswordRepeat) {
                 return res.status(422).json({
                     error:
